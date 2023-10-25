@@ -46,9 +46,15 @@ class TicketController extends Controller
             ->paginate(20);
     }
 
-    public function store(TicketStoreRequest $request)
+    public function store(Request $request)
     {
-        $validatedData = $request->validated();
+        $validatedData = $request->validate([
+            'subject' => 'required',
+            'priority' => 'required',
+            'category_id' => 'nullable',
+            'user_id' => 'nullable',
+            'assigned_to' => 'nullable'
+        ]);
         $validatedData['assigned_to'] = $this->user;
         return Ticket::create($validatedData);
     }
@@ -58,10 +64,13 @@ class TicketController extends Controller
         return Ticket::find($ticket);
     }
 
-    public function update(TicketUpdateRequest $request,$ticket)
+    public function update(Request $request,$ticket)
     {
         $ticket = Ticket::find($ticket);
-        $data = $request->validated();
+        $data = $request->validate([
+            'type' => 'required',
+            'user' => 'nullable'
+        ]);
         match ($data['type']){
             'open' => $ticket->open(),
             'close' => $ticket->close(),

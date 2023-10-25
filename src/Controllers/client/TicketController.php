@@ -7,6 +7,7 @@ use App\Models\User;
 use Fibdesign\Ticket\Models\Ticket;
 use Fibdesign\Ticket\requests\TicketStoreRequest;
 use Fibdesign\Ticket\requests\TicketUpdateRequest;
+use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
@@ -21,9 +22,13 @@ class TicketController extends Controller
         return $this->user->tickets;
     }
 
-    public function store(TicketStoreRequest $request)
+    public function store(Request $request)
     {
-        $validatedData = $request->validated();
+        $validatedData = $request->validate([
+            'subject' => 'required',
+            'priority' => 'required',
+            'category_id' => 'nullable',
+        ]);
         return $this->user->tickets()->create($validatedData);
     }
 
@@ -32,10 +37,13 @@ class TicketController extends Controller
         return Ticket::find($ticket);
     }
 
-    public function update(TicketUpdateRequest $request,$ticket): bool
+    public function update(Request $request,$ticket): bool
     {
         $ticket = Ticket::find($ticket);
-        $data = $request->validated();
+        $data = $request->validate([
+            'type' => 'required',
+            'user' => 'nullable'
+        ]);
         match ($data['type']){
             'open' => $ticket->open(),
             'close' => $ticket->close(),

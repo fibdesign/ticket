@@ -57,21 +57,4 @@ trait HasScopes
     {
         return $builder->whereNull('deleted_at');
     }
-
-
-    public function scopeOpen():self
-    {
-        $this->status = StatusEnums::OPEN;
-        return $this;
-    }
-    public function scopeClose():self
-    {
-        $this->status = StatusEnums::CLOSED;
-        return $this;
-    }
-    public function scopeArchive():self
-    {
-        $this->delete();
-        return $this;
-    }
 }

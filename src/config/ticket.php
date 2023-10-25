@@ -2,6 +2,4 @@
 
 return [
     'url' => 'https://fibdesign.ir/',
-    'routePrefix' => '',
-    'extraFields' => []
 ];

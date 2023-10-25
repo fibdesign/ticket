@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Fibdesign\Ticket\Models\Ticket;
 use Fibdesign\Ticket\requests\TicketMessageStoreRequest;
+use Illuminate\Http\Request;
 
 class TicketMessageController extends Controller
 {
@@ -22,10 +23,13 @@ class TicketMessageController extends Controller
         return $ticket->messages;
     }
 
-    public function store(TicketMessageStoreRequest $request, $ticket)
+    public function store(Request $request, $ticket)
     {
         $ticket = Ticket::find($ticket);
-        $data = $request->validated();
+        $data = $request->validate([
+            'content' => 'required',
+            'file' => 'nullable',
+        ]);
         if ($request->hasFile('file')){
             $data['file'] = $request->file('file')->store("/tickets/$ticket->id", 'files');
         }
