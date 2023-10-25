@@ -1,0 +1,28 @@
+{
+    "name": "fibdesign/ticket",
+    "description": "Laravel ticket system.",
+    "type": "plugin",
+    "version": "0.1.0",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Fibdesign\\Ticket\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sadegh",
+            "email": "74778568+msghaderi77@users.noreply.github.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\Fibdesign\\Ticket\\Providers\\TicketProvider"
+            ]
+        }
+    },
+    "require": {
+        "fibdesign/toolkit": "^0.1"
+    }
+}
