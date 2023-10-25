@@ -1,13 +1,11 @@
 <?php
 
-namespace Fibdesign\Ticket\Controllers\admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Fibdesign\Ticket\enums\StatusEnums;
 use Fibdesign\Ticket\Models\Ticket;
-use Fibdesign\Ticket\requests\TicketStoreRequest;
-use Fibdesign\Ticket\requests\TicketUpdateRequest;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 

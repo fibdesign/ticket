@@ -1,11 +1,10 @@
 <?php
 
-namespace Fibdesign\Ticket\Controllers\client;
+namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Fibdesign\Ticket\Models\Ticket;
-use Fibdesign\Ticket\requests\TicketMessageStoreRequest;
 use Illuminate\Http\Request;
 
 class TicketMessageController extends Controller

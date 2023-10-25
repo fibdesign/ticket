@@ -1,12 +1,11 @@
 <?php
 
-namespace Fibdesign\Ticket\Controllers\admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Fibdesign\Ticket\mails\TicketUpdateMail;
 use Fibdesign\Ticket\Models\Ticket;
-use Fibdesign\Ticket\requests\TicketMessageStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
