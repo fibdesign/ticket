@@ -54,10 +54,10 @@ class TicketProvider extends ServiceProvider
     public function publishControllers()
     {
         $this->publishes([
-            __DIR__.'/../Controllers/admin' => app_path('Http/Controllers/TicketController.php'),
-            __DIR__.'/../Controllers/admin' => app_path('Http/Controllers/TicketMessageController.php'),
-            __DIR__.'/../Controllers/client' => app_path('Http/Controllers/TicketController.php'),
-            __DIR__.'/../Controllers/client' => app_path('Http/Controllers/TicketMessageController.php'),
+            __DIR__.'/../Controllers/admin/TicketController.php' => app_path('Http/Controllers/TicketController.php'),
+            __DIR__.'/../Controllers/admin/TicketMessageController.php' => app_path('Http/Controllers/TicketMessageController.php'),
+            __DIR__.'/../Controllers/client/TicketController.php' => app_path('Http/Controllers/TicketController.php'),
+            __DIR__.'/../Controllers/client/TicketMessageController.php' => app_path('Http/Controllers/TicketMessageController.php'),
         ], 'ticket-controllers');
     }
 }
